@@ -6,6 +6,7 @@ function Home() {
 
 
       <View style={styles.container}>
+      {/*
         <FlatList
           data={[
             {key: 'Devin'},
@@ -19,6 +20,13 @@ function Home() {
           ]}
           renderItem={({item}) => <Text style={styles.item}>{item.key}</Text>}
         />
+        */}
+          <View style={styles.cellLeft}>
+            <Text>component 1</Text>
+          </View>
+          <View style={styles.cellRight}>
+            <Text>component 2</Text>
+          </View>
       </View>
     )
 }
@@ -27,6 +35,7 @@ const styles = StyleSheet.create(
   {
     container: {
       flex: 1,
+      flexDirection: 'row',
       marginTop: 10,
       marginRight: 10,
       marginLeft: 10,
@@ -36,14 +45,11 @@ const styles = StyleSheet.create(
       backgroundColor: '#ffffff',
     },
     cellLeft: {
-      width: 50,
-      flexGrow: 1,
-      justifyContent: 'flex-start',
+      flex: 0.5,
     },
     cellRight: {
       width: 100,
-      flexGrow: 3,
-      justifyContent: 'flex-end',
+      flex: 0.5,
     }
   }
 );
