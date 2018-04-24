@@ -1,55 +1,62 @@
 import React from 'react';
-import { Button, Text, View, StyleSheet, FlatList } from 'react-native';
+import { Text, View, StyleSheet } from 'react-native';
+import config from '../libs/config';
 
 function Home() {
-    return (
-
-
-      <View style={styles.container}>
-      {/*
-        <FlatList
-          data={[
-            {key: 'Devin'},
-            {key: 'Jackson'},
-            {key: 'James'},
-            {key: 'Joel'},
-            {key: 'John'},
-            {key: 'Jillian'},
-            {key: 'Jimmy'},
-            {key: 'Julie'},
-          ]}
-          renderItem={({item}) => <Text style={styles.item}>{item.key}</Text>}
-        />
-        */}
-          <View style={styles.cellLeft}>
-            <Text>component 1</Text>
-          </View>
-          <View style={styles.cellRight}>
-            <Text>component 2</Text>
-          </View>
-      </View>
+  const { page: { home: { appName, description, copyright } } } = config
+  return (
+        <View style={styles.container}>
+            <View style={{flex: 0.5, flexDirection: 'row', borderBottomWidth: 0.5}}>
+              <View style={styles.titleBlock}>
+                <Text>Application Name</Text>
+              </View>
+              <View style={styles.contentBlock}>
+                <Text>{appName}</Text>
+              </View>
+            </View>
+            <View style={{flex: 3, borderBottomWidth: 0.5}}>
+              <View style={{flex: 0.5, justifyContent:'center', alignItems: 'center', borderBottomWidth: 0.5}}>
+                  <Text>Description</Text>
+              </View>
+              <View style={{flex: 2,justifyContent:'flex-start', alignItems: 'center'}}>
+                  <Text>{description}</Text>
+              </View>
+            </View>
+            <View style={{flex: 0.5, flexDirection: 'row'}}>
+              <View style={styles.titleBlock}>
+                  <Text>Copyright</Text>
+              </View>
+              <View style={styles.contentBlock}>
+                  <Text>{copyright}</Text>
+              </View>
+            </View>
+        </View>
     )
 }
 
 const styles = StyleSheet.create(
   {
     container: {
-      flex: 1,
-      flexDirection: 'row',
+      flex:0.8,
       marginTop: 10,
       marginRight: 10,
       marginLeft: 10,
+      marginBottom: 10,
       borderColor: '#000000',
       borderWidth: 0.5,
-      borderRadius: 3,
+      borderRadius: 2,
       backgroundColor: '#ffffff',
     },
-    cellLeft: {
-      flex: 0.5,
+    titleBlock: {
+      flex: 0.4,
+      justifyContent:'center',
+      alignItems: 'center',
+      borderRightWidth: 0.5
     },
-    cellRight: {
-      width: 100,
-      flex: 0.5,
+    contentBlock: {
+      flex: 0.6,
+      justifyContent:'center',
+      alignItems: 'center'
     }
   }
 );

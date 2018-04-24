@@ -1,10 +1,12 @@
-import React from 'react'
+import React from 'react';
 import { TabNavigator, StackNavigator } from 'react-navigation';
 import Home from './components/home';
 import Search from './components/search';
 import Detail from './components/detail';
 import Info from './components/info';
 import Bookmark from './components/bookmark';
+import { Provider } from 'mobx-react';
+import stores from './mobx';
 
 const HomeStack = StackNavigator({
   Home: { screen: Home }
@@ -27,13 +29,17 @@ const RootStack = TabNavigator(
   {
     Home: { screen: HomeStack },
     Search: { screen: SearchStack },
-    Info: { screen: InfoStack },
     Bookmark: { screen: BookmarkStack },
+    Info: { screen: InfoStack }
   }
 );
 
 export default class App extends React.Component {
   render() {
-    return <RootStack />;
+      return (
+      <Provider {...stores}>
+        <RootStack />
+      </Provider>
+    )
   }
 }
