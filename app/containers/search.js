@@ -2,9 +2,9 @@ import React from 'react';
 import { Button, Text, View, TextInput, FlatList, Image } from 'react-native';
 import { observable } from 'mobx';
 import { observer, inject } from 'mobx-react';
+
 @inject('SearchStore')
-@observer
-class Search extends React.Component {
+@observer class Search extends React.Component {
     constructor(props) {
       super(props);
       this.state = {
@@ -23,7 +23,7 @@ class Search extends React.Component {
           {this.props.SearchStore.movies && (
           <FlatList
             data={this.props.SearchStore.movies}
-            keyExtractor={(_, i) => i}
+            keyExtractor={(_, i) => i.toString()}
             renderItem={({ item }) => (
               <View style={{borderWidth: 0.5, padding: 10, justifyContent: 'center', alignItems: 'center'}}>
               <View>
@@ -36,12 +36,11 @@ class Search extends React.Component {
             )}
           />
         )}
-        {/*
           <Button
           title="Go to Details"
-          onPress={() => this.props.navigation.navigate('Details')}
+          onPress={() => this.props.SearchStore.getMovies()}
         />
-        */}
+        
         </View>
       );
     }

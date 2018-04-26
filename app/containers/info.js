@@ -4,7 +4,7 @@ import config from '../libs/config'
 
 function Info () {
   const { page: { info: { appName, appDescription, author, division } } } = config
-  const img = require('../images/imdb.png')
+  const img = require('../assets/imdb.png')
   return (
     <View style={styles.container}>
       <View style={{flex: 1, justifyContent: 'center', alignItems: 'center', borderBottomWidth: 0.5}}>

@@ -1,12 +1,14 @@
 import React from 'react'
 import { TabNavigator, StackNavigator } from 'react-navigation'
-import Home from './components/home'
-import Search from './components/search'
-import Detail from './components/detail'
-import Info from './components/info'
-import Bookmark from './components/bookmark'
+import Home from './containers/home'
+import Search from './containers/search'
+import Detail from './containers/detail'
+import Info from './containers/info'
+import Bookmark from './containers/bookmark'
 import { Provider } from 'mobx-react'
-import stores from './mobx'
+import stores from './boot'
+import { YellowBox } from 'react-native'
+YellowBox.ignoreWarnings(['Warning: isMounted(...) is deprecated', 'Module RCTImageLoader']);
 
 const HomeStack = StackNavigator({
   Home: { screen: Home }
