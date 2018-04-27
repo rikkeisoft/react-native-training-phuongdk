@@ -19,6 +19,7 @@ import { observer, inject } from 'mobx-react';
     render() {
       return (
         <View style={{flex: 1, padding:10}}>
+        <View><Text></Text></View>
           <TextInput placeholder="Search by movie name..." onChangeText={(text) => this.setState({text})} />
           {this.props.SearchStore.movies && (
           <FlatList
