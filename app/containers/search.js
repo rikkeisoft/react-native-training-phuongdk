@@ -1,15 +1,13 @@
 import React from 'react';
-import { Button, Text, View, TextInput, FlatList, Image } from 'react-native';
+import { View, TextInput } from 'react-native';
 import { observable } from 'mobx';
 import { observer, inject } from 'mobx-react';
+import Searchcontent from '../screens/search';
 
 @inject('SearchStore')
 @observer class Search extends React.Component {
     constructor(props) {
       super(props);
-      this.state = {
-        text:''
-      };
     }
 
     componentDidMount() {
@@ -17,31 +15,10 @@ import { observer, inject } from 'mobx-react';
     }
 
     render() {
+      const {navigation: { navigate }, SearchStore: { movies, message, totalPerPage, totalResults } } = this.props;
       return (
-        <View style={{flex: 1, padding:10}}>
-        <View><Text></Text></View>
-          <TextInput placeholder="Search by movie name..." onChangeText={(text) => this.setState({text})} />
-          {this.props.SearchStore.movies && (
-          <FlatList
-            data={this.props.SearchStore.movies}
-            keyExtractor={(_, i) => i.toString()}
-            renderItem={({ item }) => (
-              <View style={{borderWidth: 0.5, padding: 10, justifyContent: 'center', alignItems: 'center'}}>
-              <View>
-                <Image source={{uri: item.Poster}} style={{width: 193, height: 110}} />
-              </View>
-              <Text>{item.Title}</Text>
-              <Text>{item.Year}</Text>
-              <Text>{item.Type}</Text>
-              </View>
-            )}
-          />
-        )}
-          <Button
-          title="Go to Details"
-          onPress={() => this.props.SearchStore.getMovies()}
-        />
-        
+        <View style={{flex: 1, margin: 10, borderWidth: 0.5, backgroundColor: '#ffffff'}}>
+          <Searchcontent navigate={navigate} movies={movies || []} message={message} totalPerPage={totalPerPage} totalResults={totalResults} />
         </View>
       );
     }

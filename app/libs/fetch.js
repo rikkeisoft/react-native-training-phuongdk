@@ -4,8 +4,9 @@ import config from './config'
 class App {
   static fetchMovies (keyword, params = null, page = 1) {
     const mode = params === 'i' ? params : 's'
+    const uri = `https://www.omdbapi.com/?${mode}=${keyword}&page=${page}&apikey=${config.apiKey}`
     return new Promise((resolve, reject) => {
-      axios.get(`https://www.omdbapi.com/?${mode}=${keyword}&page=${page}&apikey=${config.apiKey}`)
+      axios.get(uri)
         .then(results => {
           if (results.data.Response === 'True') {
             resolve(results)

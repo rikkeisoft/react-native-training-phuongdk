@@ -14,7 +14,7 @@ const HomeStack = StackNavigator({
   Home: { screen: Home }
 })
 
-const SearchStack = StackNavigator({
+const SearchStack = StackNavigator({  
   Search: { screen: Search },
   Detail: { screen: Detail }
 })
@@ -33,6 +33,11 @@ const RootStack = TabNavigator(
     Search: { screen: SearchStack },
     Bookmark: { screen: BookmarkStack },
     Info: { screen: InfoStack }
+  },
+  {
+    initialRouteName: 'Search',
+    animationEnabled: true,
+    swipeEnabled: true
   }
 )
 

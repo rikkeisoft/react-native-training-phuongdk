@@ -67,6 +67,7 @@ const styles = StyleSheet.create(
     },
     contentBlock: {
       flex: 0.6,
+      padding: 5,
       justifyContent: 'center',
       alignItems: 'center'
     }
