@@ -91,8 +91,8 @@ class searchStore {
     @observable totalPerPage = null;
     @observable totalResults = null;
 
-    @action getMovies() {
-        app.fetchMovies(config.defaultMovies)
+    @action getMovies(keyword) {
+        app.fetchMovies(keyword)
         .then(results => {
             this.movies = results.data.Search;
             this.message =  results.data.Response;
@@ -105,6 +105,11 @@ class searchStore {
             this.totalPerPage = null;
             this.totalResults = null;
         })
+    }
+
+    @action emptyMovies() {
+        this.movies = [];
+        this.message = config.page.search.keyWordLengthMessage;
     }
 }
 export default searchStore

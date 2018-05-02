@@ -1,12 +1,12 @@
 import React from 'react'
 import { Text, View, AsyncStorage } from 'react-native'
+import { observer, inject } from 'mobx-react'
 
+@inject('BookmarkStore')
+@observer
 class Bookmark extends React.Component {
   constructor (props) {
     super(props)
-    this.state = {
-      movies: []
-    }
   }
 
   componentDidMount() {
@@ -14,38 +14,34 @@ class Bookmark extends React.Component {
   }
 
   listBookMark() {
-    let arr = []
-    let obj = {}
     AsyncStorage.getAllKeys((err, keys) => {
       AsyncStorage.multiGet(keys, (err, stores) => {
-        stores.map((result, i, store) => {
-          obj.id = store[i][0];
-          obj.title = store[i][1];
-          arr.push(obj);
-          window.alert(store)
+        stores.map((item, index, store) => {
+          let obj = {}
+          obj.id = store[index][0];
+          obj.title = store[index][1];
+          this.props.BookmarkStore.listBookMark(obj);
         });
       });
     });
-    this.setState({
-      movies: ['1', '2', '3']
-    })
   }
 
-  render () {
+  render () { 
+    const { navigation: { navigate }, BookmarkStore: { bookmarks } } = this.props;
     return (
       <View style={{ flex: 1, padding: 10}}>
         <Text style={{fontSize: 20, textAlign: 'center'}}>Movie bookmarked</Text>
-      
         {
-        this.state.movies.map((item, key) => (
-          <View key={key}>
-          <Text>{item.id}</Text>
-          <Text>{item.Title}</Text>
+        bookmarks && bookmarks.length > 0
+        ? bookmarks.map((item, key) => (
+          <View key={key} style={{marginTop: 10}}>
+          <Text style={{color: 'blue'}} onPress={() => {navigate('Detail',{movieId: item.id});}}>
+            {item.title}
+          </Text>
           </View>
-))
-
-}
-
+        ))
+        : <Text style={{fontSize: 15, textAlign: 'center'}}>Currently there are no bookmarked movies</Text>  
+        }
       </View>
     )
   }

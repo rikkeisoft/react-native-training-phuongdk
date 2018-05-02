@@ -1,6 +1,5 @@
 import React from 'react'
 import { Text, View, AsyncStorage } from 'react-native'
-import { observable } from 'mobx';
 import { observer, inject } from 'mobx-react';
 import Detailcontent from '../screens/detail';
 

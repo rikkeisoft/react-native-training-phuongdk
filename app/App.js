@@ -8,13 +8,13 @@ import Bookmark from './containers/bookmark'
 import { Provider } from 'mobx-react'
 import stores from './boot'
 import { YellowBox } from 'react-native'
-YellowBox.ignoreWarnings(['Warning: isMounted(...) is deprecated', 'Module RCTImageLoader']);
+YellowBox.ignoreWarnings(['Warning: isMounted(...) is deprecated', 'Module RCTImageLoader'])
 
 const HomeStack = StackNavigator({
   Home: { screen: Home }
 })
 
-const SearchStack = StackNavigator({  
+const SearchStack = StackNavigator({
   Search: { screen: Search },
   Detail: { screen: Detail }
 })
@@ -35,9 +35,15 @@ const RootStack = TabNavigator(
     Info: { screen: InfoStack }
   },
   {
+    removeClippedSubviews: false,
     initialRouteName: 'Search',
     animationEnabled: true,
     swipeEnabled: true
+    // navigationOptions: ({ navigation }) => ({
+    //   tabBarOnPress: (previousscene, scene, jumpToIndex) => {
+    //     console.warn(previousscene);
+    //   },
+    // }),
   }
 )
 
