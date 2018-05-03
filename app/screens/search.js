@@ -15,7 +15,7 @@ class Searchcontent extends Component {
     const { movies, message, navigate, search } = this.props
     return (
       <View style={{flex: 1}}>
-        <View style={{flex: 0.1}}>
+        <View>
           <TextInput placeholder='Search by movie name...' onChangeText={(value) => this.handleSearch(value)} value={search} />
         </View>
         {

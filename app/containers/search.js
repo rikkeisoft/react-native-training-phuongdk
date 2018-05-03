@@ -1,6 +1,5 @@
 import React from 'react';
 import { View, TextInput } from 'react-native';
-import { observable } from 'mobx';
 import { observer, inject } from 'mobx-react';
 import Searchcontent from '../screens/search';
 import config from '../libs/config';
@@ -11,6 +10,7 @@ import config from '../libs/config';
       super(props);
       this.timeoutId = null
       this.handleSearch = this.handleSearch.bind(this)
+      
     }
 
     handleSearch(value) {

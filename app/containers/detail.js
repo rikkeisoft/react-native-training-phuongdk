@@ -1,5 +1,5 @@
 import React from 'react'
-import { Text, View, AsyncStorage } from 'react-native'
+import { Text, View } from 'react-native'
 import { observer, inject } from 'mobx-react';
 import Detailcontent from '../screens/detail';
 
@@ -29,7 +29,7 @@ class Detail extends React.Component {
   render () {
     const {DetailStore: { movie, message, bookmark } } = this.props;
     return (
-      <View style={{ flex: 1, alignItems: 'center', borderWidth:0.5, margin: 10, padding: 10, backgroundColor: '#ffffff', minHeight: '10%' }}>
+      <View style={{ flex: 1, alignItems: 'center', borderWidth:0.5, margin: 10, padding: 10, backgroundColor: '#ffffff' }}>
         <Detailcontent onBookMarkChange={this.handleBookMark} movie={movie || null} message={message} bookmark={bookmark} />
       </View>
     )

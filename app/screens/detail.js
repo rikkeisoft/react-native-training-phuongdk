@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import { Button, Text, View, Image } from 'react-native'
+import { Button, Text, View, ScrollView, Image } from 'react-native'
 
 class Detailcontent extends Component {
   constructor (props) {
@@ -14,7 +14,7 @@ class Detailcontent extends Component {
   render () {
     const { movie, message, bookmark} = this.props
     return (
-      <View>
+      <ScrollView>
         {
           movie && movie !== null
             ? (
@@ -48,7 +48,7 @@ class Detailcontent extends Component {
               accessibilityLabel='Bookmarked'
             />
         }
-      </View>
+      </ScrollView>
     )
   }
 }
